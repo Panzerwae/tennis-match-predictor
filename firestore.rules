@@ -1,0 +1,32 @@
+// File: Firestore security rules (firestore.rules)
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Player Collection Rules
+    match /players/{playerId} {
+      allow read, write: if request.auth != null;
+
+      allow create: if request.resource.data.name is string &&
+                    request.resource.data.skillLevel is int &&
+                    request.resource.data.skillLevel >= 1 &&
+                    request.resource.data.skillLevel <= 10 &&
+                    request.resource.data.wins is int &&
+                    request.resource.data.losses is int;
+
+      allow update: if resource.data.name == request.resource.data.name &&
+                    request.resource.data.skillLevel is int &&
+                    request.resource.data.skillLevel >= 1 &&
+                    request.resource.data.skillLevel <= 10;
+    }
+
+    // Match Collection Rules
+    match /matches/{matchId} {
+      allow read, write: if request.auth != null;
+
+      allow create: if request.resource.data.date is string &&
+                    request.resource.data.teams is list &&
+                    request.resource.data.teams.size() > 0;
+    }
+  }
+}

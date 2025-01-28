@@ -1,0 +1,21 @@
+{
+    "indexes": [
+      {
+        "queryScope": "COLLECTION",
+        "collectionGroup": "matches",
+        "fields": [
+          { "fieldPath": "date", "order": "ASCENDING" },
+          { "fieldPath": "teams", "arrayConfig": "CONTAINS" }
+        ]
+      },
+      {
+        "queryScope": "COLLECTION",
+        "collectionGroup": "players",
+        "fields": [
+          { "fieldPath": "skillLevel", "order": "DESCENDING" },
+          { "fieldPath": "wins", "order": "DESCENDING" }
+        ]
+      }
+    ],
+    "fieldOverrides": []
+  }

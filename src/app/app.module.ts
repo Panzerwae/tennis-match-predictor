@@ -9,6 +9,12 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { environment } from '../environments/environment';
 import { MatchPredictorComponent } from './match-predictor/match-predictor.component';
 import { HistoryComponent } from './history/history.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -22,7 +28,13 @@ import { HistoryComponent } from './history/history.component';
     AppRoutingModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase), // Use Firebase config from environment file
-    AngularFirestoreModule,
+    AngularFirestoreModule, 
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

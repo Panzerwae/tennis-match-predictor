@@ -1,1 +1,25 @@
-<p>players works!</p>
+<!-- add-player.component.html -->
+<div class="container">
+    <h2>Add Player</h2>
+    <form (ngSubmit)="addPlayer()">
+      <mat-form-field>
+        <mat-label>Player Name</mat-label>
+        <input matInput [(ngModel)]="newPlayer.name" name="name" required />
+      </mat-form-field>
+  
+      <mat-form-field>
+        <mat-label>Skill Level (1-10)</mat-label>
+        <input
+          matInput
+          type="number"
+          [(ngModel)]="newPlayer.skillLevel"
+          name="skillLevel"
+          required
+          min="1"
+          max="10"
+        />
+      </mat-form-field>
+  
+      <button mat-raised-button color="primary" type="submit">Add Player</button>
+    </form>
+  </div>

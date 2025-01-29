@@ -33,4 +33,15 @@ export class FirebaseService {
     const id = this.firestore.createId();
     return this.firestore.collection('matches').doc(id).set({ ...match, id });
   }
+  // Fetch matches for a specific date
+getMatchesByDate(date: string): Observable<Match[]> {
+  return this.firestore
+    .collection<Match>('matches', (ref) => ref.where('date', '==', date))
+    .valueChanges({ idField: 'id' });
+}
+
+// Update a match
+updateMatch(matchId: string, data: Partial<Match>): Promise<void> {
+  return this.firestore.collection('matches').doc(matchId).update(data);
+}
 }

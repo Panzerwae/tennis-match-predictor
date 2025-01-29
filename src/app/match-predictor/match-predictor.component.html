@@ -1,1 +1,12 @@
-<p>match-predictor works!</p>
+<!-- match-predictor.component.html -->
+<div class="container">
+  <h2>Today's Matches</h2>
+  <div *ngFor="let match of matches">
+    <h3>Match: {{ match.teams[0].player1 }} & {{ match.teams[0].player2 }}</h3>
+    <mat-form-field>
+      <mat-label>Score</mat-label>
+      <input matInput [(ngModel)]="match.teams[0].score" />
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="saveMatch(match)">Save Match</button>
+  </div>
+</div>

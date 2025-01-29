@@ -1,1 +1,23 @@
-<p>history works!</p>
+<!-- history.component.html -->
+<div class="container">
+    <h2>Match History</h2>
+  
+    <mat-form-field>
+      <mat-label>Select Date</mat-label>
+      <input matInput [matDatepicker]="picker" [(ngModel)]="selectedDate" />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  
+    <mat-form-field>
+      <mat-label>Search by Player Name</mat-label>
+      <input matInput [(ngModel)]="searchPlayer" />
+    </mat-form-field>
+  
+    <button mat-raised-button color="primary" (click)="filterHistory()">Search</button>
+  
+    <div *ngFor="let match of filteredMatches">
+      <h3>{{ match.date }}</h3>
+      <p>Match: {{ match.teams[0].player1 }} & {{ match.teams[0].player2 }} | Score: {{ match.teams[0].score }}</p>
+    </div>
+  </div>

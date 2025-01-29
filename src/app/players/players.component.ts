@@ -5,30 +5,32 @@ import { Player } from '../models/player.model';
 
 @Component({
   selector: 'app-players',
-  template: `
-    <div>
-      <h2>Player Management</h2>
-      <form (submit)="addPlayer()">
-        <input [(ngModel)]="newPlayer.name" placeholder="Player Name" required />
-        <input
-          type="number"
-          [(ngModel)]="newPlayer.skillLevel"
-          placeholder="Skill Level (1-10)"
-          required
-          min="1"
-          max="10"
-        />
-        <button type="submit">Add Player</button>
-      </form>
+  templateUrl: './players.component.html',
+    styleUrls: ['./players.component.scss'],
+  // template: `
+  //   <div>
+  //     <h2>Player Management</h2>
+  //     <form (submit)="addPlayer()">
+  //       <input [(ngModel)]="newPlayer.name" placeholder="Player Name" required />
+  //       <input
+  //         type="number"
+  //         [(ngModel)]="newPlayer.skillLevel"
+  //         placeholder="Skill Level (1-10)"
+  //         required
+  //         min="1"
+  //         max="10"
+  //       />
+  //       <button type="submit">Add Player</button>
+  //     </form>
 
-      <ul>
-        <li *ngFor="let player of players">
-          {{ player.name }} (Skill: {{ player.skillLevel }})
-          <button (click)="deletePlayer(player.id)">Delete</button>
-        </li>
-      </ul>
-    </div>
-  `,
+  //     <ul>
+  //       <li *ngFor="let player of players">
+  //         {{ player.name }} (Skill: {{ player.skillLevel }})
+  //         <button (click)="deletePlayer(player.id)">Delete</button>
+  //       </li>
+  //     </ul>
+  //   </div>
+  // `,
 })
 export class PlayersComponent implements OnInit {
   players: Player[] = [];
